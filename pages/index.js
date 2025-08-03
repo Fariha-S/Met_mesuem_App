@@ -9,7 +9,7 @@
 * 
 *  Name: Fariha Shajjan      Student ID: 166194233      Date: 2025-08-08
 *
-*  Vercel App (Deployed) Link: 
+*  Vercel App (Deployed) Link: https://assignment5-aivovyyp7-fariha-shajjans-projects.vercel.app
 *
 ********************************************************************************/
 
