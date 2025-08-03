@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 import { useRouter } from 'next/router';
 import { useAtom } from 'jotai';
 import { favouritesAtom, searchHistoryAtom } from '@/store';
@@ -11,10 +11,10 @@ export default function RouteGuard({ children }) {
   const [favouritesList, setFavouritesList] = useAtom(favouritesAtom);
   const [searchHistory, setSearchHistory] = useAtom(searchHistoryAtom);
 
-  async function updateAtoms() {
-  setFavouritesList(await getFavourites());
-  setSearchHistory(await getHistory());
-}
+  const updateAtoms = useCallback(async () => {
+    setFavouritesList(await getFavourites());
+    setSearchHistory(await getHistory());
+  }, [setFavouritesList, setSearchHistory]);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -25,7 +25,7 @@ export default function RouteGuard({ children }) {
     } else if (token) {
       updateAtoms();
     }
-  }, [router.pathname]);
+  }, [router.pathname, router, updateAtoms]);
 
   return children;
 }
