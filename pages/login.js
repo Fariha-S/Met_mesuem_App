@@ -31,7 +31,7 @@ export default function Login() {
     const success = await authenticateUser(user, password);
     if (success) {
       await updateAtoms();
-      router.push('/favourites');
+      router.push('/');
     } else {
       setWarning('Invalid username or password');
     }

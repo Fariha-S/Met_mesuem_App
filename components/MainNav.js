@@ -23,7 +23,7 @@ export default function MainNav() {
   
   useEffect(() => {
     setToken(readToken());
-  }, []);
+  }, [router.pathname]);
   async function submitForm(e) {
     e.preventDefault();
     if (!searchField.trim()) return;
